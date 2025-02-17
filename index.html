@@ -93,28 +93,6 @@
         </div>
     </div>
 
-
-    <div id="quiz4" class="quiz">
-        <h1>Quando foi o ano/time-contra/estádio que Rogério Ceni fez o centésimo gol de sua carreira profissional?</h1>
-        <div class="button-container">
-            <button onclick="checkAnswer(4, false)">A - 2011/Palmeiras/Pacaembu</button>
-            <button onclick="checkAnswer(4, false)">B - 2013/Corinthians/Morumbi</button>
-            <button onclick="checkAnswer(4, false)">C - 2013/Palmeiras/Morumbi</button>
-            <button onclick="checkAnswer(4, true)">D - 2011/Corinthians/Arena Barueri</button>
-        </div>
-    </div>
-
-
-    <div id="quiz5" class="quiz">
-        <h1>Qual a semelhança da Shakira que eu acho que parece contigo?</h1>
-        <div class="button-container">
-            <button onclick="checkAnswer(5, false)">A - Rosto</button>
-            <button onclick="checkAnswer(5, false)">B - Cabelo</button>
-            <button onclick="checkAnswer(5, false)">C - Corpo</button>
-            <button onclick="checkAnswer(5, true)">D - Definitivamente todas as opções anteriores</button>
-        </div>
-    </div>
-
     
     <div id="mensagemFinal" class="mensagem-final">
         <h1>Se chegou aqui, é que conseguiu acertar todas as questões, meus parabéns. Agora está preparada para a pergunta mais desafiadora? Se sim, clique em continuar abaixo.</h1>
@@ -146,10 +124,6 @@
                         document.getElementById("quiz2").classList.add("active");
                     } else if (quizNumber === 2) {
                         document.getElementById("quiz3").classList.add("active");
-                    } else if (quizNumber === 3) {
-                        document.getElementById("quiz4").classList.add("active");
-                    } else if (quizNumber === 4) {
-                        document.getElementById("quiz5").classList.add("active");
                     } else {
                         document.getElementById("mensagemFinal").classList.add("active");
                     }
