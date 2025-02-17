@@ -157,8 +157,8 @@
         noButton.addEventListener("click", moveNoButton);
 
         yesButton.addEventListener("click", () => {
-            message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
-            document.querySelector(".button-container").remove();
+        message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
+        document.querySelector(".button-container").style.display = "none"; // Esconde os botões
         });
     </script>
 </body>
