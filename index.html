@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Danielle</title>
+    <title>DANIELLE`S QUIZ</title>
     <style>
         body {
             display: flex;
@@ -93,13 +93,23 @@
         </div>
     </div>
     
+    <div id="quiz4" class="quiz">
+        <h1>Responda corretamente: Quando foi o ano/contra qual time/estádio que Rogério Ceni fez o centésimo gol de sua carreira profissional?</h1>
+        <div class="button-container">
+            <button onclick="checkAnswer(4, false)">A - 2011/Palmeiras/Pacaembu</button>
+            <button onclick="checkAnswer(4, false)">B - 2013/Corinthians/Morumbi</button>
+            <button onclick="checkAnswer(4, false)">C - 2013/Palmeiras/Morumbi</button>
+            <button onclick="checkAnswer(4, true)">D - 2011/Corinthians/Arena Barueri</button>
+        </div>
+    </div>
+    
     <div id="mensagemFinal" class="mensagem-final">
-        <h1>Se chegou aqui, é que conseguiu acertar todas as questões, meus parabéns. Agora está preparada para a pergunta mais desafiadora? Se sim, clique em continuar abaixo.</h1>
+        <h1>Agora que acertou todas as perguntas anteriores, essa será a última do desafio.</h1>
         <button onclick="proximoDesafio()">Continuar</button>
     </div>
     
     <div id="convite" class="convite">
-        <h1 id="message">Dani, topa sair comigo essa semana?</h1>
+        <h1 id="message">Topa sair comigo essa semana?</h1>
         <div class="button-container">
             <button id="yes">Sim</button>
             <button id="no">Não</button>
@@ -123,7 +133,9 @@
                         document.getElementById("quiz2").classList.add("active");
                     } else if (quizNumber === 2) {
                         document.getElementById("quiz3").classList.add("active");
-                    } else {
+                    } else if (quizNumber === 3) {
+                        document.getElementById("quiz4").classList.add("active");
+                    } else if (quizNumber === 4) {
                         document.getElementById("mensagemFinal").classList.add("active");
                     }
                 }, 1500);
@@ -145,20 +157,9 @@
         const yesButton = document.getElementById("yes");
         const message = document.getElementById("message");
 
-        function moveNoButton() {
-            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
-            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
-            noButton.style.position = "absolute";
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-        }
-        
-        noButton.addEventListener("mouseover", moveNoButton);
-        noButton.addEventListener("click", moveNoButton);
-
         yesButton.addEventListener("click", () => {
-        message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
-        document.querySelector(".button-container").style.display = "none"; // Esconde os botões
+            message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
+            document.querySelector(".button-container").style.display = "none"; 
         });
     </script>
 </body>
