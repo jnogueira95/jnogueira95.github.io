@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Danielle</title>
     <title>DANIELLE`S QUIZ</title>
     <style>
         body {
@@ -17,7 +18,7 @@
             overflow: hidden;
             text-align: center;
         }
-        .quiz, .convite, .feedback, .mensagem-final, .quiz4 {
+        .quiz, .convite, .feedback, .mensagem-final {
             display: none;
         }
         .active {
@@ -74,7 +75,7 @@
             <button onclick="checkAnswer(1, false)">C - Dos amantes da escritora JK Rowling</button>
         </div>
     </div>
-    
+
     <div id="quiz2" class="quiz">
         <h1>Qual filme Hermione utiliza o Vira Tempo, um dos itens mais poderosos do universo HP?</h1>
         <div class="button-container">
@@ -83,7 +84,7 @@
             <button onclick="checkAnswer(2, true)">C - Harry Potter e o Prisioneiro de Azkaban</button>
         </div>
     </div>
-    
+
     <div id="quiz3" class="quiz">
         <h1>Qual temporada de The Big Bang Theory a Penny beija o Leonard pela primeira vez?</h1>
         <div class="button-container">
@@ -92,13 +93,8 @@
             <button onclick="checkAnswer(3, false)">C - Temporada 3</button>
         </div>
     </div>
-    
-    <div id="mensagemFinal" class="mensagem-final">
-        <h1>Agora que acertou todas as perguntas anteriores, essa será a última do desafio.</h1>
-        <button onclick="proximoDesafio()">Continuar</button>
-    </div>
 
-    <div id="quiz4" class="quiz4">
+    <div id="quiz4" class="quiz">
         <h1>Responda corretamente: Quando foi o ano/contra qual time/estádio que Rogério Ceni fez o centésimo gol de sua carreira profissional?</h1>
         <div class="button-container">
             <button onclick="checkAnswer(4, false)">A - 2011/Palmeiras/Pacaembu</button>
@@ -108,21 +104,28 @@
         </div>
     </div>
     
+    <div id="mensagemFinal" class="mensagem-final">
+        <h1>Se chegou aqui, é que conseguiu acertar todas as questões, meus parabéns. Agora está preparada para a pergunta mais desafiadora? Se sim, clique em continuar abaixo.</h1>
+        <h1>Agora que acertou todas as perguntas anteriores, essa será a última do desafio.</h1>
+        <button onclick="proximoDesafio()">Continuar</button>
+    </div>
+
     <div id="convite" class="convite">
+        <h1 id="message">Dani, topa sair comigo essa semana?</h1>
         <h1 id="message">Topa sair comigo essa semana?</h1>
         <div class="button-container">
             <button id="yes">Sim</button>
             <button id="no">Não</button>
         </div>
     </div>
-    
+
     <div id="feedback" class="feedback"></div>
 
     <script>
         function checkAnswer(quizNumber, isCorrect) {
             const feedback = document.getElementById("feedback");
             feedback.style.display = "block";
-            
+
             if (isCorrect) {
                 feedback.textContent = "Resposta correta!";
                 feedback.className = "feedback correct";
@@ -133,10 +136,11 @@
                         document.getElementById("quiz2").classList.add("active");
                     } else if (quizNumber === 2) {
                         document.getElementById("quiz3").classList.add("active");
+                    } else {
                     } else if (quizNumber === 3) {
-                        document.getElementById("mensagemFinal").classList.add("active");
+                        document.getElementById("quiz4").classList.add("active");
                     } else if (quizNumber === 4) {
-                        document.getElementById("convite").classList.add("active");
+                        document.getElementById("mensagemFinal").classList.add("active");
                     }
                 }, 1500);
             } else {
@@ -147,12 +151,12 @@
                 }, 1500);
             }
         }
-        
+
         function proximoDesafio() {
             document.getElementById("mensagemFinal").classList.remove("active");
-            document.getElementById("quiz4").classList.add("active");
+            document.getElementById("convite").classList.add("active");
         }
-        
+
         const noButton = document.getElementById("no");
         const yesButton = document.getElementById("yes");
         const message = document.getElementById("message");
@@ -167,10 +171,11 @@
         
         noButton.addEventListener("mouseover", moveNoButton);
         noButton.addEventListener("click", moveNoButton);
-
         yesButton.addEventListener("click", () => {
+        message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
+        document.querySelector(".button-container").style.display = "none"; // Esconde os botões
             message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
-            document.querySelector(".button-container").style.display = "none"; // Esconde os botões "Sim" e "Não"
+            document.querySelector(".button-container").style.display = "none"; 
         });
     </script>
 </body>
