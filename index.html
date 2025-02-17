@@ -17,7 +17,7 @@
             overflow: hidden;
             text-align: center;
         }
-        .quiz, .convite, .feedback, .mensagem-final {
+        .quiz, .convite, .feedback, .mensagem-final, .quiz4 {
             display: none;
         }
         .active {
@@ -93,7 +93,12 @@
         </div>
     </div>
     
-    <div id="quiz4" class="quiz">
+    <div id="mensagemFinal" class="mensagem-final">
+        <h1>Agora que acertou todas as perguntas anteriores, essa será a última do desafio.</h1>
+        <button onclick="proximoDesafio()">Continuar</button>
+    </div>
+
+    <div id="quiz4" class="quiz4">
         <h1>Responda corretamente: Quando foi o ano/contra qual time/estádio que Rogério Ceni fez o centésimo gol de sua carreira profissional?</h1>
         <div class="button-container">
             <button onclick="checkAnswer(4, false)">A - 2011/Palmeiras/Pacaembu</button>
@@ -101,11 +106,6 @@
             <button onclick="checkAnswer(4, false)">C - 2013/Palmeiras/Morumbi</button>
             <button onclick="checkAnswer(4, true)">D - 2011/Corinthians/Arena Barueri</button>
         </div>
-    </div>
-    
-    <div id="mensagemFinal" class="mensagem-final">
-        <h1>Agora que acertou todas as perguntas anteriores, essa será a última do desafio.</h1>
-        <button onclick="proximoDesafio()">Continuar</button>
     </div>
     
     <div id="convite" class="convite">
@@ -134,9 +134,9 @@
                     } else if (quizNumber === 2) {
                         document.getElementById("quiz3").classList.add("active");
                     } else if (quizNumber === 3) {
-                        document.getElementById("quiz4").classList.add("active");
-                    } else if (quizNumber === 4) {
                         document.getElementById("mensagemFinal").classList.add("active");
+                    } else if (quizNumber === 4) {
+                        document.getElementById("convite").classList.add("active");
                     }
                 }, 1500);
             } else {
@@ -150,16 +150,27 @@
         
         function proximoDesafio() {
             document.getElementById("mensagemFinal").classList.remove("active");
-            document.getElementById("convite").classList.add("active");
+            document.getElementById("quiz4").classList.add("active");
         }
         
         const noButton = document.getElementById("no");
         const yesButton = document.getElementById("yes");
         const message = document.getElementById("message");
 
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
+            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.position = "absolute";
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+        
+        noButton.addEventListener("mouseover", moveNoButton);
+        noButton.addEventListener("click", moveNoButton);
+
         yesButton.addEventListener("click", () => {
-            message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui e combinarmos nosso encontro! :)";
-            document.querySelector(".button-container").style.display = "none"; 
+            message.textContent = "Parabéns! Você conseguiu completar o desafio! Agora volte no WhatsApp e me diga a palavra-chave 'PISADA NA CABEÇA' para eu saber que conseguiu chegar até aqui!";
+            document.querySelector(".button-container").style.display = "none"; // Esconde os botões "Sim" e "Não"
         });
     </script>
 </body>
